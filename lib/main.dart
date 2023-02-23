@@ -77,6 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: SizedBox(
+
         child: WebViewWidget(controller: webViewController),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
@@ -113,8 +114,8 @@ class _MyHomePageState extends State<MyHomePage> {
             debugPrint('Page finished loading: $url');
             // log('Page finished LOAD: $metaJson');
             Future.delayed(Duration(seconds: 1), () {
-              // webViewController
-              //     .runJavaScript('setData( \'$metaJson\' ,  \'$imgBase64\' );');
+              webViewController
+                  .runJavaScript("var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=0.4'); document.getElementsByTagName('head')[0].appendChild(meta);");
               //
               // webViewController
               //     .runJavaScript('repaintTemplate(''#3f3a49'');');
